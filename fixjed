@@ -1,0 +1,11 @@
+#!/usr/bin/awk -f
+
+BEGIN {
+	RS="\r\n"
+	print "\002Compiled with GALasm, fixed by fixjed."
+}
+/^Device:.*/ { print $0"*" }
+/^\*.+/ { print substr($0,2)"*" }
+END {
+	print "\003""0000"
+}

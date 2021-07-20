@@ -1,0 +1,24 @@
+GAL16V8
+cgaega
+
+NC RED GRN BLU RI GIINT BI HSYNC VSYNC GND
+EGA CSYNC /NEGCSYNC B0 B1 G0 G1 R0 R1 VCC
+
+; RED/GRN/BLU are the high order bits, RI/GI/BI are the low order or
+; separate intensity bits. GI is also the signle intensity in CGA mode
+
+R0 = EGA * RI + /EGA * RED * GIINT
+R1 = RED
+
+; CGA mode brown detection: RED * GRN * /BLU * /GIINT
+G0 = EGA * GIINT + /EGA * GRN * GIINT + /EGA * RED * GRN * /BLU * /GIINT
+G1 = EGA * GRN + /EGA * GRN * /RED + /EGA * GRN * BLU + /EGA * GRN * GIINT
+
+B0 = EGA * BI + /EGA * BLU * GIINT
+B1 = BLU
+
+CSYNC = HSYNC * VSYNC + /HSYNC * /VSYNC
+NEGCSYNC = HSYNC * VSYNC + /HSYNC * /VSYNC
+
+DESCRIPTION
+CGA to EGA conversion with brown detection and composite sync combining
