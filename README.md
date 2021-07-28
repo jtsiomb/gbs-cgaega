@@ -1,6 +1,8 @@
 GBS-8200 CGA/EGA input board
 ============================
 
+![photo](http://nuclear.mutantstargoat.com/hw/gbs-cgaega/img/gbs-cgaega-crop.jpg)
+
 The GBS-8200 video upscaler is advertised as being able to convert CGA/EGA video
 to VGA, but it can't handle either without further modification. The missing
 pieces for being able to feed CGA and EGA video to the GBS board are the
